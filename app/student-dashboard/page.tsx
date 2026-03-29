@@ -69,7 +69,7 @@ export default function StudentDashboard() {
   const [chatLoading, setChatLoading] = useState(false);
   const router = useRouter();
 
-  const avatarlar = ['🦁', '🦊', '🐼', '🐨', '🦒', '🦋', '🐘', '🐧','⚡', '🔥', '❄️', '🌈', '🧙‍♂️', '🧜‍♀️', '🦕', '🐉', '👾'];
+  const avatarlar = ['🦸‍♂️', '🦸‍♀️', '🥷', '🧙‍♂️', '🧜‍♀️', '🤖', '🦊', '🦄', '🦁', '🚀'];
 
   useEffect(() => {
     const checkUser = async () => {
