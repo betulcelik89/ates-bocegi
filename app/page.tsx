@@ -1,65 +1,83 @@
-import Image from "next/image";
+import React from 'react';
+import Link from 'next/link';
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <main className="min-h-screen bg-tegv-light flex flex-col items-center justify-center p-6 text-center">
+      
+      {/* --- ÜST BÖLÜM: DEV KESKİN TEGV GÜNEŞİ VE BAŞLIK --- */}
+      <div className="mb-10 animate-in fade-in zoom-in duration-1000">
+        
+        {/* DEV KESKİN TEGV GÜNEŞİ (Logodaki gibi sivri uçlu ve büyük) */}
+        <div className="flex justify-center mb-6 drop-shadow-[0_0_40px_rgba(255,204,0,0.6)]">
+          <svg 
+            width="200" 
+            height="200" 
+            viewBox="0 0 200 200" 
+            className="animate-[spin_40s_linear_infinite]"
+          >
+            <defs>
+              {/* Güneşin sivri ışınlarını oluşturan üçgen tanımı */}
+              <polygon id="tegvRay" points="100,2 114,80 86,80" fill="#FFCC00" />
+            </defs>
+            {/* 12 adet sivri ışını döndürerek diziyoruz */}
+            {[0, 30, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330].map((angle) => (
+              <use key={angle} href="#tegvRay" transform={`rotate(${angle} 100 100)`} />
+            ))}
+            {/* Merkezdeki büyük yuvarlak */}
+            <circle cx="100" cy="100" r="52" fill="#FFCC00" />
+            {/* İçindeki hafif parlama efekti */}
+            <circle cx="85" cy="85" r="14" fill="white" fillOpacity="0.2" />
+          </svg>
+        </div>
+
+        {/* ANA BAŞLIK */}
+        <h1 className="text-8xl font-black text-tegv-navy uppercase tracking-tighter leading-tight">
+          ATEŞ <span className="text-tegv-orange">BÖCEĞİ</span>
+        </h1>
+        <div className="h-2.5 w-64 bg-tegv-orange mx-auto mt-4 rounded-full shadow-sm"></div>
+        <p className="text-2xl text-tegv-navy/70 mt-6 font-bold uppercase tracking-[0.3em]">
+          Gönüllü Eğitim Portalı
+        </p>
+      </div>
+
+      {/* --- GİRİŞ KARTLARI (ÖĞRENCİ VE EĞİTMEN) --- */}
+      <div className="grid md:grid-cols-2 gap-10 w-full max-w-6xl mt-10">
+        
+        {/* ÖĞRENCİ KARTI (TURUNCU TEMA) */}
+        <div className="group bg-white p-14 rounded-[70px] shadow-2xl border-b-[20px] border-tegv-orange hover:translate-y-[-15px] transition-all duration-500">
+          <div className="text-9xl mb-6 group-hover:scale-110 transition-transform">🎒</div>
+          <h2 className="text-5xl font-black text-tegv-navy mb-4 tracking-tighter uppercase">Öğrenciyim</h2>
+          <p className="text-gray-500 text-xl mb-12 font-medium leading-relaxed">
+            Oyunlar, rozetler ve kendi gelişim bahçen seni bekliyor!
           </p>
+          <Link href="/student-login" className="block w-full">
+            <button className="bg-tegv-orange text-white font-black py-6 px-12 rounded-[35px] w-full text-3xl shadow-[0_15px_35px_rgba(255,128,0,0.3)] hover:brightness-110 active:scale-95 transition-all cursor-pointer uppercase tracking-tight">
+              IŞIĞINI YAK! 🚀
+            </button>
+          </Link>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        {/* EĞİTMEN KARTI (LACİVERT TEMA) */}
+        <div className="group bg-white p-14 rounded-[70px] shadow-2xl border-b-[20px] border-tegv-navy hover:translate-y-[-15px] transition-all duration-500">
+          <div className="text-9xl mb-6 group-hover:scale-110 transition-transform">🧑‍🏫</div>
+          <h2 className="text-5xl font-black text-tegv-navy mb-4 tracking-tighter uppercase">Eğitmenim</h2>
+          <p className="text-gray-500 text-xl mb-12 font-medium leading-relaxed">
+            Sınıfını yönet, yoklama al ve gönüllü arkadaşlarınla paylaşım yap.
+          </p>
+          <Link href="/login" className="block w-full">
+            <button className="bg-tegv-navy text-white font-black py-6 px-12 rounded-[35px] w-full text-3xl shadow-[0_15px_35px_rgba(0,51,102,0.3)] hover:brightness-125 active:scale-95 transition-all cursor-pointer uppercase tracking-tight">
+              GİRİŞ YAP 💡
+            </button>
+          </Link>
         </div>
-      </main>
-    </div>
+
+      </div>
+
+      {/* --- ALT BİLGİ (MOTTO) --- */}
+      <footer className="mt-28 text-tegv-navy font-black uppercase text-sm tracking-[0.5em] opacity-40">
+        TEGV • BİR ÇOCUK DEĞİŞİR, TÜRKİYE GELİŞİR.
+      </footer>
+    </main>
   );
 }
