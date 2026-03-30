@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import Groq from "groq-sdk";
 
-const ANAHTAR = "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"; 
+const ANAHTAR = process.env.NEXT_PUBLIC_GROQ_API_KEY;
 const groq = new Groq({ apiKey: ANAHTAR });
 
 export async function POST(req: Request) {
